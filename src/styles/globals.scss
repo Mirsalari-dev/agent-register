@@ -128,21 +128,29 @@
   user-select: none;
 }
 
-html {
-  font-size: 62.5%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 
 html {
   font-size: 62.5%;
   height: 100%;
+
+}
+
+#__next, body {
+  height: 100%;
+}
+#__next {
+  font-size: 62.5%;
+  font-family: IRANYekanX;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: calc(var(--vh, 1vh) * 100);
+  background-color: #11b6b6;
 }
 
 /* width */
