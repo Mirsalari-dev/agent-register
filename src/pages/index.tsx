@@ -12,6 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <Typography variant="h2"  color="grey.900">سلام عرض شد</Typography>
     </>
   );
