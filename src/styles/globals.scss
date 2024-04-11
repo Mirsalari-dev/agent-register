@@ -128,14 +128,13 @@
   user-select: none;
 }
 
-
 html {
   font-size: 62.5%;
   height: 100%;
-
 }
 
-#__next, body {
+#__next,
+body {
   height: 100%;
 }
 #__next {
@@ -174,4 +173,7 @@ html {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $primary500;
+}
+div.Toastify__toast-body > div:nth-child(2) {
+  font-size: 12px;
 }
