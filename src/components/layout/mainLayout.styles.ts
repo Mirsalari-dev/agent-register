@@ -20,5 +20,6 @@ export const MainLayoutChildren = styled(Box)(() => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  marginTop: "-150px",
+  marginTop: "-110px",
+  position: "sticky",
 }));

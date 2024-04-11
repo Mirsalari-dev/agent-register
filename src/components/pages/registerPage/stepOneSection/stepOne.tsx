@@ -1,24 +1,33 @@
 import MainButton from "@/components/UI/buttons/mainButton";
 import MainInput from "@/components/UI/inputs/main/mainInput";
+import useLoginForm from "@/hooks/forms/useOtpForm/useRegisterForm";
+import { ILoginFormikProps } from "@/hooks/forms/useOtpForm/useRegisterForm.types";
+import { formikErrorHandler } from "@/utils/formikErrorHandler";
 import { Stack, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { FormEvent } from "react";
 import { toast } from "react-toastify";
-import { createOtp } from "./apis/stepOneApi/api";
-import { FormEvent, useState } from "react";
-import { ILoginFormikProps } from "@/hooks/forms/useOtpForm/useRegisterForm.types";
-import useLoginForm from "@/hooks/forms/useOtpForm/useRegisterForm";
-import { formikErrorHandler } from "@/utils/formikErrorHandler";
+import { createOtp } from "../apis/stepOneApi/api";
+import { IStepOneProps } from "./stepOne.types";
 
-const StepOne = () => {
+const StepOne = ({ setStepRegister }: IStepOneProps) => {
+  const router = useRouter();
+  /// api call for create otp step
   const { mutate, isLoading } = useMutation(createOtp, {
     onSuccess() {
-      toast.success("نیازمند با موفقیت حذف شد.");
+      toast.success("پیامک برای شما ارسال شد.");
+      router.push({
+        query: { validateOtp: loginFormik.values.phone_number },
+      });
+      setStepRegister(2);
     },
     onError() {
-      toast.error("خطایی رخ داده است");
+      toast.error("چند دقیقه دیگر دوباره تلاش کنید");
     },
   });
 
+  /// handle form submission with custom hook formik
   const handleLogin = (values: ILoginFormikProps): void => {
     mutate({ phone_number: values.phone_number });
   };
@@ -34,9 +43,6 @@ const StepOne = () => {
     if (formikErrorHandler(loginFormik)) return;
     loginFormik.handleSubmit();
   };
-  console.log(loginFormik.values);
-  
-
   return (
     <Stack
       direction="column"
@@ -79,6 +85,7 @@ const StepOne = () => {
             fullWidth
             size="baseMd"
             color="info"
+            loading={isLoading}
           >
             ادامه
           </MainButton>

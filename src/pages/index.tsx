@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useState } from "react";
 
-
 /// dynamic import for avoid extra render
 const StepOne = dynamic(
-  () => import("../components/pages/registerPage/stepOne")
+  () => import("../components/pages/registerPage/stepOneSection/stepOne")
 );
-
-
+const StepTwo = dynamic(
+  () => import("../components/pages/registerPage/stepTwoSection/stepTwo")
+);
 
 export default function Home() {
   const [stepRegister, setStepRegister] = useState(1);
@@ -27,7 +27,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {stepRegister === 1 && <StepOne />}
+      {stepRegister === 1 && <StepOne setStepRegister={setStepRegister} />}
+      {stepRegister === 2 && <StepTwo setStepRegister={setStepRegister} />}
+
     </>
   );
 }
