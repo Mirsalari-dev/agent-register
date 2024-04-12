@@ -50,5 +50,5 @@ export interface IConfirmFormikProps {
   };
   phone: string;
   province: IProvince;
-  Name: string;
+  name: string;
 }

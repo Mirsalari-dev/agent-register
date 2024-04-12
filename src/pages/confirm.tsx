@@ -1,9 +1,12 @@
+import { checkAgencyCode } from "@/components/pages/confirmPage/apis/api";
 import useConfirmForm from "@/hooks/forms/useConfirmForm/useConfirmForm";
 import { IConfirmFormikProps } from "@/hooks/forms/useConfirmForm/useConfirmForm.types";
 import { formikErrorHandler } from "@/utils/formikErrorHandler";
 import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { MouseEvent, useState } from "react";
 import { toast } from "react-toastify";
 /// dynamic import for avoid extra render
@@ -16,22 +19,28 @@ const StepTwo = dynamic(
 
 const Confirm = () => {
   const [stepConfirm, setStepConfirm] = useState(1);
+  const { query } = useRouter();
 
-  // const { mutate, isLoading } = useMutation(addUnderCoverageList, {
-  //   onSuccess(res) {
-  //     toast.success("اطلاعات با موفقیت ثبت شد");
-  //   },
-  //   onError() {
-  //     toast.error("خطایی رخ داده است");
-  //   },
-  // });
+  const { mutate, isLoading } = useMutation(checkAgencyCode, {
+    onSuccess(res) {
+      toast.success("اطلاعات با موفقیت ثبت شد");
+    },
+    onError(err: AxiosError<{ error_details: { fa_details: string } }>) {
+      toast.error(err?.response?.data?.error_details.fa_details);
+    },
+  });
 
   const handleSubmit = (values: any): void => {
     const isLastStep = stepConfirm === 2;
     if (isLastStep) {
-      // mutate({
-      //   ...values,
-      // });
+
+      mutate({
+        ...values,
+        county: values.county.id,
+        province: values.province.id,
+        insurance_branch: values.insurance_branch.id,
+        phone_number: query.user,
+      });
     } else {
       setStepConfirm((prev) => prev + 1);
     }

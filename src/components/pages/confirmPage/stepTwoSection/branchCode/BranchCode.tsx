@@ -23,7 +23,6 @@ const BranchCode = ({ formik }: IBranchCodeProps) => {
       refetch();
     }
   }, [formik.values.insurance_branch.name, refetch]); // Include refetch in dependency array
-  console.log(formik.values?.province?.id);
 
   return (
     <MainAutocomplete
@@ -46,9 +45,12 @@ const BranchCode = ({ formik }: IBranchCodeProps) => {
               name: e.target.value,
             })
           }
-          helperText={Boolean(
-            formik.errors?.insurance_branch?.id &&
-              formik.touched.insurance_branch) && "شعبه بیمه خود را مشخص کنید"}
+          helperText={
+            Boolean(
+              formik.errors?.insurance_branch?.id &&
+                formik.touched.insurance_branch
+            ) && "شعبه بیمه خود را مشخص کنید"
+          }
           required
         />
       )}

@@ -25,7 +25,7 @@ const StepTwo = ({ setStepRegister }: IStepTwoProps) => {
     {
       onSuccess() {
         toast.success("اعتبارسنجی شماره تلفن موفقیت آمیز بود.");
-        push("/confirm");
+        push(`/confirm?user=${phone_number}`);
       },
       onError() {
         toast.error("کد وارد شده نادرست است");

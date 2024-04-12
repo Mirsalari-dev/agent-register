@@ -28,7 +28,13 @@ const confirmValidationStepTwo = Yup.object().shape({
   province: Yup.object().shape({
     id: Yup.number().required("استان خود را انتخاب کنید"),
   }),
-  Name: Yup.string().required("لطفا نام نمایندگی خود را انتخاب کنید."),
+  name: Yup.lazy((agencyType) => {
+    if (agencyType === "legal") {
+      return Yup.string().required("لطفا نام نمایندگی خود را انتخاب کنید.");
+    } else {
+      return Yup.string();
+    }
+  }),
 });
 
 export const CONFIRM_FORMIK_VALIDATION_SCHEMA = [
@@ -45,7 +51,7 @@ const initialValues: IConfirmFormikProps = {
 
   // Second Step
   address: "",
-  agency_type: "",
+  agency_type: "real",
   agent_code: "",
   city_code: "",
   county: {
@@ -89,7 +95,7 @@ const initialValues: IConfirmFormikProps = {
     },
     country: null,
   },
-  Name: "",
+  name: "",
 };
 
 const useConfirmForm = ({

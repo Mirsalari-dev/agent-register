@@ -4,6 +4,8 @@ export const MainLayoutContainer = styled(Box)(() => ({
   width: "100%",
   height: "100%",
   position: "relative",
+  overflowY: "scroll",
+
 }));
 
 export const MainLayoutTopSheet = styled(Box)(() => ({
@@ -22,4 +24,5 @@ export const MainLayoutChildren = styled(Box)(() => ({
   alignItems: "center",
   marginTop: "-110px",
   position: "sticky",
+  paddingBottom:"10px"
 }));

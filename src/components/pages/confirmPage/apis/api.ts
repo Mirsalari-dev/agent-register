@@ -26,3 +26,10 @@ export const getInsuranceCode = async ({
   );
   return response?.data;
 };
+export const checkAgencyCode = async (values: any): Promise<unknown> => {
+  const response = await mainApi.post<unknown>(
+    `/DEY/agent/verification/signup/`,
+    values
+  );
+  return response.data;
+};
