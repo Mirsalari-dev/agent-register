@@ -25,6 +25,7 @@ const Provinces_City = ({ formik }: IProvincesCityProps) => {
           Boolean(formik.errors?.county?.id && formik.touched.county) &&
           "شهر خود را وارد کنید"
         }
+        required
       />
     </>
   );

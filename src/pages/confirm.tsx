@@ -1,5 +1,4 @@
 import { signupCode } from "@/components/pages/confirmPage/apis/api";
-import { ISignupCodeProps } from "@/components/pages/confirmPage/apis/api.types";
 import useConfirmForm from "@/hooks/forms/useConfirmForm/useConfirmForm";
 import { IConfirmFormikProps } from "@/hooks/forms/useConfirmForm/useConfirmForm.types";
 import { setTokenInCookies } from "@/utils/cookies/token";

@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { IApi, responseRefresh } from "./services.types";
 import { getTokenFromCookie } from "@/utils/cookies/token";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { IApi } from "./services.types";
 
 // Create Axios Instance
 export const createAxiosInstance = (baseUrl: string): AxiosInstance => {

@@ -33,7 +33,7 @@ const StepTwo = ({ confirmFormHandleSubmit, formik }: IStepTwoProps) => {
           color="info"
           onClick={confirmFormHandleSubmit}
         >
-          ادامه
+          ثبت نهایی
         </MainButton>
       </Stack>
     </Stack>

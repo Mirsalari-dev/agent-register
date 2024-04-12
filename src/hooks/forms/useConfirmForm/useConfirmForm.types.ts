@@ -1,24 +1,17 @@
+export interface ICreatorUser {
+  id: null | number;
+  first_name: string;
+  last_name: string;
+  username: string;
+}
 export interface ICounty {
   id: null | number;
   is_active: boolean;
   name: string;
   fanavaran_code: string;
   name_split: string;
-  province: {
-    id: null | number;
-    is_active: boolean;
-    name: string;
-    code: string;
-    name_split: string;
-    creator_user: null | number;
-    country: null | number;
-  };
-  creator_user: {
-    id: null | number;
-    first_name: string;
-    last_name: string;
-    username: string;
-  };
+  province: IProvince;
+  creator_user: ICreatorUser;
 }
 
 export interface IProvince {
@@ -27,12 +20,7 @@ export interface IProvince {
   name: string;
   code: string;
   name_split: string;
-  creator_user: {
-    id: null | number;
-    first_name: string;
-    last_name: string;
-    username: string;
-  };
+  creator_user: ICreatorUser;
   country: null | number;
 }
 

@@ -6,6 +6,8 @@ import MainAutocomplete from "@/components/UI/inputs/autocomplete/mainAutocomple
 import MainInput from "@/components/UI/inputs/main/mainInput";
 
 const BranchCode = ({ formik }: IBranchCodeProps) => {
+
+/// get all branches that are in provinces
   const { data: insurance_branch, refetch } = useQuery({
     queryFn: () =>
       getInsuranceCode({

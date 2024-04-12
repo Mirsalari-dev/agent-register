@@ -1,13 +1,13 @@
-import { Box, useTheme } from "@mui/material";
-import { ReactNode } from "react";
+import DayLogo from "@images/Day.png";
+import { useTheme } from "@mui/material";
+import Image from "next/image";
 import {
   MainLayoutChildren,
   MainLayoutContainer,
   MainLayoutTopSheet,
 } from "./mainLayout.styles";
-import DayLogo from "@images/Day.png";
-import Image from "next/image";
-const MainLayout = ({ children }: { children: ReactNode }) => {
+import { IMainLayoutProps } from "./mainLayout.types";
+const MainLayout = ({ children }: IMainLayoutProps) => {
   const theme = useTheme();
   return (
     <MainLayoutContainer bgcolor={theme.palette.grey[200]}>

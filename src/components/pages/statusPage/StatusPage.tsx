@@ -9,6 +9,7 @@ import { userStatus } from "./api/api";
 const StatusPage = () => {
   const router = useRouter();
 
+  /// check user status request api
   const { data, isLoading } = useQuery({
     queryFn: userStatus,
     queryKey: ["userStatus"],
@@ -25,9 +26,13 @@ const StatusPage = () => {
       paddingY={4}
     >
       <Stack width={275} gap={2}>
-        {data?.status_code === 200 && (
+        {data?.status_code === 200 ? (
           <Typography marginY={2} textAlign="center" fontSize="14px">
             درخواست شما در حال بررسی است، در صورت تایید اپلیکیشن فعال می شود
+          </Typography>
+        ) : (
+          <Typography marginY={2} textAlign="center" fontSize="14px">
+            عملیات نا موفق بود! دوباره تلاش کنید
           </Typography>
         )}
         <MainButton
@@ -35,6 +40,7 @@ const StatusPage = () => {
           fullWidth
           size="baseMd"
           color="info"
+          disabled={isLoading}
           onClick={() => {
             deleteTokenFromCookie();
             router.push("/");

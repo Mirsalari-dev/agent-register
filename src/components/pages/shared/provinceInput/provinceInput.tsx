@@ -11,6 +11,8 @@ const ProvinceInput: FC<IProvinceInput> = ({
   error,
   ...props
 }) => {
+
+  /// Ger provinces from Api
   const { data: provinces, isLoading } = useQuery({
     queryFn: getProvinces,
     queryKey: ["provincesList"],

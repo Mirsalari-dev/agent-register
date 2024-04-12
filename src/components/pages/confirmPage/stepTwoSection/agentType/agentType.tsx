@@ -5,6 +5,7 @@ import MainRadioButton from "@/components/UI/inputs/radioButton/radioButton";
 import MainInput from "@/components/UI/inputs/main/mainInput";
 
 const AgentType = ({ formik }: IAgentTypeProps) => {
+  /// check if user agent type is real or legal
   const [showName, setShowName] = useState(false);
   useEffect(() => {
     if (formik.values.agency_type === "legal") {

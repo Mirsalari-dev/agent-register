@@ -11,8 +11,10 @@ import IconTick from "../icons/tickIcon";
 
 const AgentCode = ({ formik }: IAgentCodeProps) => {
   const [errorMessage, setErrorMessage] = useState<boolean | null>(null);
-  const { mutate, isLoading } = useMutation(validateAgentCode, {
-    onSuccess(res) {
+
+  /// check user agent code is available or unavailable
+  const { mutate } = useMutation(validateAgentCode, {
+    onSuccess() {
       setErrorMessage(false);
     },
     onError(err: AxiosError<{ error_details: { fa_details: string } }>) {
@@ -37,10 +39,11 @@ const AgentCode = ({ formik }: IAgentCodeProps) => {
       setTimeoutId(
         setTimeout(() => {
           mutate({ agent_code: formik.values.agent_code });
-        }, 3000)
+        }, 2500)
       );
     }
   }, [formik.values.agent_code]);
+
   return (
     <MainInput
       label="کد نمایندگی"
