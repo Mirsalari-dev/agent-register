@@ -1,12 +1,13 @@
-import { useFormik, FormikConfig, FormikProps } from "formik";
+import { FormikConfig, FormikProps, useFormik } from "formik";
 
+import { IRPhoneNumberReg } from "@/utils/regex";
 import * as Yup from "yup";
 import { ILoginFormikProps } from "./useRegisterForm.types";
 
-const validationSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
   phone_number: Yup.string()
-    .required("شماره موبایل خود را وارد کنید")
-    .matches((/^[۰۱۲۳۴۵۶۷۸۹0-9]+$/), "شماره موبایل باید ۱۱ رقم باشد"),
+    .required("لطفا شماره موبایل را وارد کنید")
+    .matches(IRPhoneNumberReg, "شماره موبایل را با فرمت درست وارد کنید."),
 });
 
 const initialValues = {
