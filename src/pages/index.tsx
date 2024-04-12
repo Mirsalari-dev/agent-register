@@ -28,8 +28,7 @@ export default function Home() {
       </Head>
 
       {stepRegister === 1 && <StepOne setStepRegister={setStepRegister} />}
-      {stepRegister === 2 && <StepTwo setStepRegister={setStepRegister} />}
-
+      {stepRegister === 2 && <StepTwo />}
     </>
   );
 }

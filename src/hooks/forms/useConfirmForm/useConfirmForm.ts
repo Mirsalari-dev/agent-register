@@ -110,7 +110,7 @@ const useConfirmForm = ({
       CONFIRM_FORMIK_VALIDATION_SCHEMA[props.stepConfirm],
     initialValues: initialValuesOverwrite ?? initialValues,
     onSubmit: onSubmitOverwrite ?? (() => {}),
-    validateOnChange: true,
+    validateOnChange: false,
     ...props,
   });
 };

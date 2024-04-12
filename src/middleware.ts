@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 // Explicitly specify the return type as NextResponse
 export default function middleware(req: NextRequest): NextResponse {
+  // req.cookies.get(JWT_ACCESS_TOKEN_KEY)
   const url = req.nextUrl;
   const searchParams = url.searchParams;
   if (url.pathname === "/confirm" && !searchParams.get("user")) {

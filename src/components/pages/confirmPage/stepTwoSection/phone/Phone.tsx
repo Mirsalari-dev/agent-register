@@ -16,14 +16,14 @@ const Phone = ({ formik }: IPhoneProps) => {
         required
         sx={{ width: "75%" }}
         {...formik.getFieldProps("phone")}
-        error={!!(formik.errors.phone && formik.touched.phone)}
+        error={formik.touched.phone && !!formik.errors.phone}
       />
       <MainInput
         label="کد"
         sx={{ width: "25%" }}
         required
         {...formik.getFieldProps("city_code")}
-        error={!!(formik.errors.city_code && formik.touched.city_code)}
+        error={formik.touched.city_code && !!formik.errors.city_code}
       />
     </Stack>
   );

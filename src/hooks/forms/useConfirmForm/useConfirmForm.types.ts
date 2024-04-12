@@ -1,4 +1,4 @@
-interface ICounty {
+export interface ICounty {
   id: null | number;
   is_active: boolean;
   name: string;
@@ -21,7 +21,7 @@ interface ICounty {
   };
 }
 
-interface IProvince {
+export interface IProvince {
   id: null | number;
   is_active: boolean;
   name: string;

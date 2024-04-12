@@ -3,7 +3,7 @@ import { FormikProps } from "formik";
 import { MouseEvent } from "react";
 
 export interface IStepTwoProps {
-  formik: any
+  formik: FormikProps<IConfirmFormikProps>
   confirmFormHandleSubmit: (
     event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => void;

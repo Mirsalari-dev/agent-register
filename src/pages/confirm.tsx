@@ -1,13 +1,15 @@
-import { checkAgencyCode } from "@/components/pages/confirmPage/apis/api";
+import { signupCode } from "@/components/pages/confirmPage/apis/api";
+import { ISignupCodeProps } from "@/components/pages/confirmPage/apis/api.types";
 import useConfirmForm from "@/hooks/forms/useConfirmForm/useConfirmForm";
 import { IConfirmFormikProps } from "@/hooks/forms/useConfirmForm/useConfirmForm.types";
+import { setTokenInCookies } from "@/utils/cookies/token";
 import { formikErrorHandler } from "@/utils/formikErrorHandler";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import { toast } from "react-toastify";
 /// dynamic import for avoid extra render
 const StepOne = dynamic(
@@ -19,21 +21,22 @@ const StepTwo = dynamic(
 
 const Confirm = () => {
   const [stepConfirm, setStepConfirm] = useState(1);
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
-  const { mutate, isLoading } = useMutation(checkAgencyCode, {
+  const { mutate } = useMutation(signupCode, {
     onSuccess(res) {
+      setTokenInCookies(res.response.access, res.response.refresh);
       toast.success("اطلاعات با موفقیت ثبت شد");
+      push("/status");
     },
     onError(err: AxiosError<{ error_details: { fa_details: string } }>) {
       toast.error(err?.response?.data?.error_details.fa_details);
     },
   });
 
-  const handleSubmit = (values: any): void => {
+  const handleSubmit = (values: IConfirmFormikProps): void => {
     const isLastStep = stepConfirm === 2;
     if (isLastStep) {
-
       mutate({
         ...values,
         county: values.county.id,

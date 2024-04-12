@@ -10,7 +10,7 @@ const Address = ({ formik }: IAddressProps) => {
       multiline
       rows={4}
       {...formik.getFieldProps("address")}
-      error={!!(formik.errors.address && formik.touched.address)}
+      error={formik.touched.address && !!formik.errors.address}
       helperText={
         !!(formik.errors.address && formik.touched.address) &&
         "آدرس خود را وارد کنید"

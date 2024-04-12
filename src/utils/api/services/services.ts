@@ -1,10 +1,19 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { IApi, responseRefresh } from "./services.types";
+import { getTokenFromCookie } from "@/utils/cookies/token";
 
 // Create Axios Instance
 export const createAxiosInstance = (baseUrl: string): AxiosInstance => {
   const instance = axios.create({
     baseURL: baseUrl,
+  });
+
+  instance.interceptors.request.use((req) => {
+    const access_token = getTokenFromCookie();
+
+    req.headers.Authorization = access_token ? `jwt ${access_token}` : "";
+
+    return req;
   });
 
   return instance;

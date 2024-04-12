@@ -3,13 +3,12 @@ import OtpInput from "@/components/UI/inputs/otpInput/otpInput";
 import { OTP_INPUT_COUNT } from "@/components/UI/inputs/otpInput/otpSection.constants";
 import { Stack, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { IStepTwoProps } from "./stepTwo.types";
-import { useRouter } from "next/router";
 import { validateOtp } from "../apis/stepTwoApi/api";
 
-const StepTwo = ({ setStepRegister }: IStepTwoProps) => {
+const StepTwo = () => {
   const { query, push } = useRouter();
   const phone_number = query.validateOtp as string;
   const inputReference: React.RefObject<HTMLInputElement> = useRef(null);
