@@ -4,7 +4,7 @@ export interface ICityInput
   extends Partial<Omit<TMainAutocompleteProps, "renderInput">> {
   label?: string | undefined;
   error?: boolean | undefined;
-  province?: number | string;
+  province?: number | string | null;
   isMine?: boolean;
   required?: boolean;
   helperText?: string | boolean;

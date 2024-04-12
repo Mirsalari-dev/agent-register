@@ -15,9 +15,9 @@ export interface IValidateAgentCodeResponse {
 }
 
 export interface IGetInsuranceCodeProps {
-  province: string | number;
+  province: number | null
   insurance: string;
-  name: string | number;
+  name: number | null
 }
 export interface IGetInsuranceCodeResponse {
   status_code: number;
