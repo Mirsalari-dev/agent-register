@@ -65,6 +65,7 @@ const StepOne = ({ setStepRegister }: IStepOneProps) => {
         <form onSubmit={registerFormHandleSubmit}>
           <MainInput
             placeholder="تلفن همراه"
+            label="تلفن همراه"
             margin="normal"
             size="small"
             {...loginFormik.getFieldProps("phone_number")}
