@@ -72,7 +72,7 @@ const initialValues: IConfirmFormikProps = {
   },
   insurance_branch: {
     id: null,
-    name: "شعبه بیمه",
+    name: "",
   },
   phone: "",
   province: {

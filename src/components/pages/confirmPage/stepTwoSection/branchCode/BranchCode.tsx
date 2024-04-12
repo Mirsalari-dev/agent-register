@@ -14,8 +14,7 @@ const BranchCode = ({ formik }: IBranchCodeProps) => {
         name: formik.values?.insurance_branch?.id,
       }),
     queryKey: ["insurance_branch", formik.values?.province?.id],
-    enabled:
-      !!formik.values?.province?.id || !!formik.values?.insurance_branch.name,
+    enabled: Boolean(formik.values?.province?.id),
   });
 
   // Use useEffect to trigger refetch on insurance_branch.name change
@@ -24,6 +23,8 @@ const BranchCode = ({ formik }: IBranchCodeProps) => {
       refetch();
     }
   }, [formik.values.insurance_branch.name, refetch]); // Include refetch in dependency array
+  console.log(formik.values?.province?.id);
+
   return (
     <MainAutocomplete
       options={insurance_branch?.response ?? []}
@@ -45,6 +46,9 @@ const BranchCode = ({ formik }: IBranchCodeProps) => {
               name: e.target.value,
             })
           }
+          helperText={Boolean(
+            formik.errors?.insurance_branch?.id &&
+              formik.touched.insurance_branch) && "شعبه بیمه خود را مشخص کنید"}
           required
         />
       )}

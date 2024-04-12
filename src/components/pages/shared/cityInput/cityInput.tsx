@@ -14,6 +14,7 @@ const CityInput: FC<ICityInput> = ({
   error,
   province,
   required = false,
+  helperText,
   ...props
 }) => {
   const { data: cities, isLoading } = useQuery({
@@ -31,6 +32,7 @@ const CityInput: FC<ICityInput> = ({
           label={label ?? "شهر"}
           error={error}
           required={required}
+          helperText={helperText}
         />
       )}
       isOptionEqualToValue={(option, value) => option?.value === value?.value}

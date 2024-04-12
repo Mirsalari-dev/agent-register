@@ -49,7 +49,7 @@ export const StyledPopper = styled(Popper)(({ theme }) => ({
   borderColor: theme.palette.primary[500],
   fontSize: "1.2rem",
   "& .MuiAutocomplete-groupUl": {
-    color: "grey.900",
+    color: "grey.100 !important",
     fontSize: "1.2rem",
   },
   "& .MuiAutocomplete-listbox": {
@@ -58,7 +58,7 @@ export const StyledPopper = styled(Popper)(({ theme }) => ({
       sm: "174px",
     },
     py: { xs: "0 !important", sm: "8px 16px !important" },
-    color: "grey.700 !important",
+    color: "grey.100 !important",
     fontSize: "1.2rem",
   },
 

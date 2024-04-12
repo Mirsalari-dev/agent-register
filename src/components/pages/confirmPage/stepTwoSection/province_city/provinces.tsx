@@ -15,12 +15,16 @@ const Provinces_City = ({ formik }: IProvincesCityProps) => {
 
       <CityInput
         province={formik.values.province?.id}
-        label="شهر محل فعالیت"
+        label="شهر"
         value={formik.values.county}
         onChange={(_, value) => formik.setFieldValue("county", value)}
         onBlur={formik.handleBlur}
         error={Boolean(formik.errors?.county?.id && formik.touched.county)}
         disabled={Boolean(!formik.values.province?.id)}
+        helperText={
+          Boolean(formik.errors?.county?.id && formik.touched.county) &&
+          "شهر خود را وارد کنید"
+        }
       />
     </>
   );

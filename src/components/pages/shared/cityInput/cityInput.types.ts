@@ -7,5 +7,5 @@ export interface ICityInput
   province?: number | string;
   isMine?: boolean;
   required?: boolean;
-
+  helperText?: string | boolean;
 }
