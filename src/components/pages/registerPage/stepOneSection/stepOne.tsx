@@ -10,6 +10,7 @@ import { FormEvent } from "react";
 import { toast } from "react-toastify";
 import { createOtp } from "../apis/stepOneApi/api";
 import { IStepOneProps } from "./stepOne.types";
+import { AxiosError } from "axios";
 
 const StepOne = ({ setStepRegister }: IStepOneProps) => {
   const router = useRouter();
@@ -22,8 +23,17 @@ const StepOne = ({ setStepRegister }: IStepOneProps) => {
       });
       setStepRegister(2);
     },
-    onError() {
-      toast.error("چند دقیقه دیگر دوباره تلاش کنید");
+    onError(
+      err: AxiosError<{
+        error_details: { fa_details: string };
+        status_code: number;
+      }>
+    ) {
+      if (err?.response?.data?.status_code === 400) {
+        toast.error(err?.response?.data?.error_details.fa_details);
+      } else {
+        toast.error("دوباره تلاش کنید");
+      }
     },
   });
 
