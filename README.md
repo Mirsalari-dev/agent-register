@@ -14,7 +14,7 @@
 <p>1. git clone</p>
 
 ```
-https://github.com/AmirhosseinMirsalari/agent-register
+https://github.com/Mirsalari-dev/agent-register
 ```
 
 <p>2. npm install</p>
